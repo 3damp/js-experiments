@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+    <script type="module" src="./main.js"></script>
+    <link rel="stylesheet" href="base-style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Tree Generator</h1>
+    </header>
+    <div class="content-container">
+
+        <canvas id="canvas" width="512" height="512" style="width: 100%; border-radius: 10px;"></canvas>
+
+        <div class="controls-container">
+            <button id="newButton">Generate</button>
+            <div class="slider-container field">
+                <label>Seed</label>
+                <div>
+                    <input id="seedInput" type="number">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
