@@ -1,19 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Procedural Pixel Plant Generator</title>
     <style>
-        body { background: #222; color: #eee; font-family: sans-serif; text-align: center; }
-        canvas { image-rendering: pixelated; border: 2px solid #444; margin-top: 20px; width: 200px;}
-        button { margin-top: 20px; padding: 8px 16px; font-size: 16px; }
+        body {
+            background: #222;
+            color: #eee;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .plant-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .plant-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .plant-row-single {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        canvas {
+            image-rendering: pixelated;
+            border: 2px solid #444;
+            margin-top: 20px;
+            width: 200px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 16px;
+        }
     </style>
 </head>
+
 <body>
-    <h1>Procedural 16x16 Pixel Plant Generator</h1>
-    <canvas id="plantCanvas" width="16" height="16"></canvas>
+    <h1>Procedural Pixel Plant Generator</h1>
+    <div class="plant-row">
+        <div class="plant-col">
+            <canvas id="plantCanvas1" width="16" height="16"></canvas>
+            <button onclick="generatePlantFor('plantCanvas1')">Generate This Plant</button>
+        </div>
+        <div class="plant-col">
+            <canvas id="plantCanvas2" width="16" height="16"></canvas>
+            <button onclick="generatePlantFor('plantCanvas2')">Generate This Plant</button>
+        </div>
+    </div>
+    <div class="plant-row-single">
+        <div class="plant-col">
+            <button onclick="breed('plantCanvas1','plantCanvas2')">Breed</button>
+            <canvas id="plantCanvas3" width="16" height="16"></canvas>
+        </div>
+    </div>
     <br>
-    <button onclick="generatePlant()">Generate New Plant</button>
     <script src="./pixelPlantGen.js"></script>
+    <script>
+
+        const genes = {}
+
+        // Helper to generate a new plant for a specific canvas
+        function generatePlantFor(canvasId) {
+            genes[canvasId] = randomGenes();
+            generatePlant(genes[canvasId], canvasId);
+        }
+
+
+        function breed(id1, id2) {
+            const newGenes = breedGenes(genes[id1], genes[id2]);
+            console.log(`New Genes:`, newGenes.flowerColor);
+            console.log(`New Genes:`, newGenes.flowerColor);
+
+            generatePlant(newGenes, 'plantCanvas3');
+        }
+
+        // Initial plants on page load
+        window.onload = () => {
+            generatePlantFor('plantCanvas1');
+            generatePlantFor('plantCanvas2');
+        }
+    </script>
 </body>
+
 </html>
