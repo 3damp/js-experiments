@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Procedural Pixel Plant Generator</title>
+    <style>
+        body { background: #222; color: #eee; font-family: sans-serif; text-align: center; }
+        canvas { image-rendering: pixelated; border: 2px solid #444; margin-top: 20px; width: 200px;}
+        button { margin-top: 20px; padding: 8px 16px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>Procedural 16x16 Pixel Plant Generator</h1>
+    <canvas id="plantCanvas" width="16" height="16"></canvas>
+    <br>
+    <button onclick="generatePlant()">Generate New Plant</button>
+    <script src="./pixelPlantGen.js"></script>
+</body>
+</html>
